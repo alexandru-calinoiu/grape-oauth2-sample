@@ -4,6 +4,7 @@ gem 'puma'
 
 gem 'bundler'
 gem 'grape', github: 'intridea/grape'
+gem 'grape-swagger'
 gem 'json'
 
 group :development, :test do
