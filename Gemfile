@@ -5,6 +5,8 @@ gem 'puma'
 gem 'bundler'
 gem 'grape', github: 'intridea/grape'
 gem 'grape-swagger'
+
+gem 'rack-cors'
 gem 'json'
 
 group :development, :test do

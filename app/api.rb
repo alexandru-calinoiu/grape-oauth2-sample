@@ -1,6 +1,6 @@
 module Sample
   class API < Grape::API
-    version 'v1'
+    version 'v1', :using => :path, vendor: 'sample', cascade: false
     prefix 'api'
     format :json
 
