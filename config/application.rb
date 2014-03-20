@@ -6,8 +6,12 @@ require 'boot'
 
 Bundler.require :default, ENV['RACK_ENV']
 
-Dir[File.expand_path('../../app/**/*.rb', __FILE__)].each do |f|
-  require f
+include_dirs = %w(models)
+
+include_dirs.each do |dir|
+  Dir[File.expand_path(File.join('../../app', dir, '*.rb'), __FILE__)].each do |f|
+    require f
+  end
 end
 
-require 'api'
+require File.expand_path('../../app/sample_app.rb', __FILE__)
