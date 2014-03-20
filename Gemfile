@@ -19,4 +19,5 @@ group :development, :test do
   gem 'rspec'
   gem 'rack-test'
   gem 'rubocop'
+  gem 'rerun'
 end
