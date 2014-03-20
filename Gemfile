@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'puma'
 
 gem 'bundler'
-gem 'grape', github: 'intridea/grape'
+gem 'grape', github: 'balauru/grape'
 gem 'grape-swagger'
 
 gem 'rack-cors'

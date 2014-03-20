@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/intridea/grape.git
-  revision: a936f83704bcb27150edf5486b75da0b74d64a12
+  remote: git://github.com/balauru/grape.git
+  revision: 91edb5467b046b352b7b3eee2572acbba1491ae8
   specs:
     grape (0.7.0)
       activesupport
@@ -75,7 +75,7 @@ GEM
     lumberjack (1.0.4)
     method_source (0.8.2)
     minitest (4.7.5)
-    multi_json (1.9.0)
+    multi_json (1.9.2)
     multi_xml (0.5.5)
     nio4r (1.0.0)
     parser (2.1.7)
