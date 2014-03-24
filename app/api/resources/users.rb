@@ -4,7 +4,7 @@ module API
       before do
         require_oauth_token
       end
-
+            
       resource :users do
         get do
         end
