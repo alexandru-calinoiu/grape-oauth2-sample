@@ -15,7 +15,7 @@ module API
         optional  :code,
                   type: String,
                   desc: 'The authorization code.'
-        optional  :client_id,
+        requires  :client_id,
                   type: String,
                   desc: 'The client id.'
         optional  :client_secret,

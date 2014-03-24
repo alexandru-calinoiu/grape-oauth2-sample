@@ -3,12 +3,15 @@ source 'http://rubygems.org'
 gem 'puma'
 
 gem 'bundler'
+
 gem 'grape', github: 'intridea/grape'
+gem 'grape-entity'
 gem 'grape-swagger'
+
+gem 'json'
 
 gem 'rack-cors'
 gem 'rack-oauth2'
-gem 'json'
 
 group :development, :test do
   gem 'pry'
