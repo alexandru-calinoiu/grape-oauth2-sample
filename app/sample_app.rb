@@ -6,12 +6,13 @@ module Sample
     def initialize
       @filenames = ['', '.html']
       @rack_static = ::Rack::Static.new(
-        lambda { [404, {}, []] },
+        -> { [404, {}, []] },
         root: File.expand_path('../../public', __FILE__),
-        urls: %w[/]
+        urls: %w(/)
         )
     end
 
+    # rubocop:disable MethodLength
     def self.instance
       @instance ||= Rack::Builder.new do
         use Rack::Cors do
@@ -22,7 +23,7 @@ module Sample
         end
 
         use Rack::Static, urls: ['/apidoc'], root: 'public'
-        use Rack::OAuth2::Server::Resource::Bearer, 'Rack::OAuth2 Sample Protected Resources' do |req|
+        use Rack::OAuth2::Server::Resource::Bearer, 'Sample API' do |req|
           AccessToken.verify(req.access_token) || req.invalid_token!
         end
 
@@ -37,7 +38,8 @@ module Sample
       # Serve error pages or respond with API response
       case response[0]
       when 404, 500
-        content = @rack_static.call(env.merge('PATH_INFO' => "/errors/#{response[0]}.html"))
+        error_page = "/errors/#{response[0]}.html"
+        content = @rack_static.call(env.merge('PATH_INFO' => error_page))
         [response[0], content[1], content[2]]
       else
         response

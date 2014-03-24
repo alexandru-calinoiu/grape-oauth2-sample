@@ -13,7 +13,7 @@ describe Sample::API do
     end
 
     it 'responds with some version' do
-      expect(last_response.body).to eq({version: '1.0.0'}.to_json)
+      expect(last_response.body).to eq({ version: '1.0.0' }.to_json)
     end
   end
 end
