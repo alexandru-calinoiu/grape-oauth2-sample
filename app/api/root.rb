@@ -1,6 +1,10 @@
 module API
+  # resources
   require 'resources/users'
   require 'resources/oauth2'
+
+  # entities
+  require 'entities/user'
 
   class Root < Grape::API
     version 'v1', using: :path, vendor: 'sample', cascade: false
