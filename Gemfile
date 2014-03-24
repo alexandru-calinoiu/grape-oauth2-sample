@@ -21,6 +21,7 @@ group :development, :test do
   gem 'rb-fsevent'
   gem 'growl'  
   gem 'rspec'
+  gem 'json_spec'
   gem 'rack-test'
   gem 'rubocop'
   gem 'rerun'

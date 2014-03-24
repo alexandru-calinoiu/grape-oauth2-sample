@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Sample::API do
+describe API::Root do
   include Rack::Test::Methods
 
   def app
-    Sample::API
+    API::Root
   end
 
   describe 'GET /api/v1/version' do

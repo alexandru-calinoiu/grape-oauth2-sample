@@ -6,7 +6,8 @@ class GenerateOauthToken
   # rubocop:disable MethodLength
   def execute(env)
     Rack::OAuth2::Server::Token.new do |req, res|
-      req.invalid_client! unless Client.verify(req.client_id, req.client_secret)
+      client = Client.verify(req.client_id)
+      req.invalid_client! unless client
 
       case req.grant_type
       when :authorization_code
@@ -15,6 +16,9 @@ class GenerateOauthToken
       when :refresh_token
         req.invalid_grant! unless RefreshToken.verify(req.refresh_token)
         res.access_token = AccessToken.build.to_bearer_token
+      when :client_credentials
+        req.invalid_client! unless client.secret == req.client_secret
+        res.access_token = AccessToken.build.to_bearer_token(true)
       else
         req.unsupported_grant_type!
       end
