@@ -9,7 +9,7 @@ describe API::Resources::OAuth2 do
 
   let(:client_id) { '42' }
 
-  let(:params) { Hash.new(grant_type: grant_type, client_id: '42') }
+  let(:params) { Hash[:grant_type, grant_type, :client_id, '42'] }
 
   shared_examples_for 'oauth2 grant type' do
     subject { last_response }
