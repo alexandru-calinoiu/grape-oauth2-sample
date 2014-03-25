@@ -17,7 +17,7 @@ class GenerateOauthToken
         req.invalid_grant! unless RefreshToken.verify(req.refresh_token)
         res.access_token = AccessToken.build.to_bearer_token
       when :client_credentials
-        req.invalid_client! unless client.secret == req.client_secret
+        req.invalid_grant! unless client.secret == req.client_secret
         res.access_token = AccessToken.build.to_bearer_token(true)
       else
         req.unsupported_grant_type!
