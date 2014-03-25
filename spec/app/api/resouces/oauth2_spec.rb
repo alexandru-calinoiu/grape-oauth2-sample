@@ -9,7 +9,7 @@ describe API::Resources::OAuth2 do
 
   let(:client_id) { '42' }
 
-  let(:params) { {grant_type: grant_type, client_id: '42'} }
+  let(:params) { Hash.new(grant_type: grant_type, client_id: '42') }
 
   shared_examples_for 'oauth2 grant type' do
     subject { last_response }
@@ -31,9 +31,9 @@ describe API::Resources::OAuth2 do
 
       its(:status) { should == 400 }
 
-      its(:body) { should have_json_path("error") }
+      its(:body) { should have_json_path('error') }
 
-      its(:body) { should have_json_path("error_description") }
+      its(:body) { should have_json_path('error_description') }
     end
   end
 
@@ -45,7 +45,7 @@ describe API::Resources::OAuth2 do
         post '/api/v1/oauth2/token', valid_params
       end
 
-      its(:body) { should include('refresh_token') }
+      its(:body) { should have_json_path('refresh_token') }
     end
   end
 
@@ -78,5 +78,19 @@ describe API::Resources::OAuth2 do
     end
 
     it_behaves_like 'contains refresh_token'
+  end
+
+  context 'when grant type is invalid' do
+    let(:grant_type) { :invalid }
+
+    before :each do
+      post '/api/v1/oauth2/token', params
+    end
+
+    subject { last_response }
+
+    its(:status) { should == 400 }
+
+    its(:body) { should have_json_path('error') }
   end
 end
